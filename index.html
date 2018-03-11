@@ -8,18 +8,34 @@
     <title>Weekend Salary Project</title>
   </head>
   <body>
-    <h1>Employees' Salary and Monthly Cost</h1>
+    <div class="cost">
+      <h1>Employees' Salary and Monthly Cost</h1>
 
-    <h2>Add Employee</h2>
-    <div class="entry">
-      <input id="firstName"type="text" name="" value="">
-      <input id="lastName"type="text" name="" value="">
-      <input id="identify"type="text" name="" value="">
-      <input id="title"type="text" name="" value="">
-      <input id="annualSalary"type="text" name="" value="">
-    </div>
+      <h2>Add Employee</h2>
+      <div class="entry">
+        <input id="firstName"type="text" placeholder="First name">
+        <input id="lastName"type="text" placeholder="Last name">
+        <input id="identify"type="text" placeholder="ID">
+        <input id="title"type="text" placeholder="Title">
+        <input id="annualSalary"type="text" placeholder="Annual Salary">
+      </div>
 
-    <button id="submit"type="button" name="button">Submit</button>
+      <button id="submit"type="button" name="button">Submit</button>
+
+      <div class="mesa">
+        <table id="fun">
+          <tr>
+            <th>First Name</th><th>Last Name</th><th>ID</th><th>Title</th><th>Annual Salary</th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="over">
+
+        <h3>Total Monthly: </h3>
+        <h3 id="bling"></h3>
+
+      </div>
 
   </body>
 </html>

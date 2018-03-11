@@ -2,12 +2,7 @@ $(document).ready(readyNow);
 
 function readyNow(){
 
-$('#firstName').attr('placeholder', 'First name');//creating placeholder for inputs
-$('#lastName').attr('placeholder', 'Last name');
-$('#identify').attr('placeholder', 'ID');
-$('#title').attr('placeholder', 'Title');
-$('#annualSalary').attr('placeholder', 'Annual Salary');
-
+let budget = 0;
 let fn = $('#firstName').val();//assigning input values
 let ln = $('#lastName').val();
 let ident = $('#identify').val();
@@ -15,6 +10,7 @@ let t = $('#title').val();
 let as = $('#annualSalary').val();
 
 let employees = [];
+let emptyArray = [];
 
 class Employee {
   constructor(firstName, lastName, identity, title, annualSalary){
@@ -26,10 +22,36 @@ class Employee {
   }//end constructor
 }//end class Employee
 
-$('#submit').on('click', calculate);
+$('#submit').on('click', postToDom);
 
-function calculate(){
-  let creator = new Employee(fn, ln, ident, t, as);
-  
+function postToDom(){
+  let fn = $('#firstName').val();
+  let ln = $('#lastName').val();
+  let ident = $('#identify').val();
+  let t = $('#title').val();
+  let as = $('#annualSalary').val();//assigning each input field to a variable
+  let creator = new Employee(fn, ln, ident, t, as);//creating an object with an employee class
+
+  employees.push(creator);//adding employee object to employees array
+  emptyArray.push(creator);
+
+
+  for (person of employees){
+    let addInfo = $('<tr><td>'+person.firstName+'<td>' +person.lastName + '<td>'+person.identity + '<td>'+person.title + '<td>'+person.annualSalary+'</td></tr>');
+    $('#fun').append(addInfo);
+  }
+  $('#bling').empty();
+  budget += (parseInt(as)/12);
+  $('#bling').append(budget);
+  if (budget > 20000){
+    $('#bling').css('color', 'red');
+  }
+  employees.pop();
+  fn = $('#firstName').val('');
+  ln = $('#lastName').val('');
+  ident = $('#identify').val('');
+  t = $('#title').val('');
+  as = $('#annualSalary').val('');//emptying each input field
+
 }
 }//end readyNow
