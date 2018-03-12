@@ -23,6 +23,7 @@ class Employee {
 }//end class Employee
 
 $('#submit').on('click', postToDom);
+$('#delete').on('click', delFromDom);
 
 function postToDom(){
   let fn = $('#firstName').val();
@@ -32,8 +33,8 @@ function postToDom(){
   let as = $('#annualSalary').val();//assigning each input field to a variable
   let creator = new Employee(fn, ln, ident, t, as);//creating an object with an employee class
 
-  employees.push(creator);//adding employee object to employees array
-  emptyArray.push(creator);
+  employees.push(creator);//adding employee object to employees array which will get deleted later in order to avoid overlapping when new rows are created
+  emptyArray.push(creator);//adding employee to array where they won't be deleted
 
 
   for (person of employees){
@@ -42,7 +43,7 @@ function postToDom(){
   }
   $('#bling').empty();
   budget += (parseInt(as)/12);
-  $('#bling').append(budget);
+  $('#bling').append(budget.toFixed(2));
   if (budget > 20000){
     $('#bling').css('color', 'red');
   }
@@ -53,5 +54,13 @@ function postToDom(){
   t = $('#title').val('');
   as = $('#annualSalary').val('');//emptying each input field
 
-}
+}//end postToDom
+
+function delFromDom (){
+  let lastRow = $('#fun').children().last();
+  let targetlr = lastRow.children().last();
+  let sal = targetlr.children().last();
+
+  targetlr.empty();//removes the last entry in the table
+}//end delFromDom
 }//end readyNow
